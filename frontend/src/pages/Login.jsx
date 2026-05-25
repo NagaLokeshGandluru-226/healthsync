@@ -26,7 +26,7 @@ const Login = () => {
     setLoading(true)
 
     const response = await axios.post(
-      "http://https://healthsync-771s.onrender.com/api/login",
+      "https://healthsync-771s.onrender.com/api://healthsync-771s.onrender.com/api/login",
       formData
     )
 
