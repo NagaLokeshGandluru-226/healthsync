@@ -45,8 +45,8 @@ const Appointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get(
-        "https:/api/appointments",
+      const response = await api.get(
+        "/appointments",
         {
           params: filters,
         }
@@ -80,8 +80,8 @@ const Appointments = () => {
     event.preventDefault()
 
     try {
-      await axios.post(
-        "https:/api/appointments",
+      await api.post(
+        "/appointments",
         formData
       )
 
@@ -112,8 +112,8 @@ const Appointments = () => {
     }
 
     try {
-      await axios.delete(
-        `https:/api/appointments/${id}`
+      await api.delete(
+        `/appointments/${id}`
       )
 
       fetchAppointments()
@@ -124,8 +124,8 @@ const Appointments = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(
-        `https:/api/appointments/${id}/status`,
+      await api.put(
+        `/appointments/${id}/status`,
         {status}
       )
 
@@ -255,7 +255,9 @@ const Appointments = () => {
             onChange={handleFilterChange}
             className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 outline-none text-slate-800 dark:text-white"
           >
-            <option value="">All Status</option>
+            <option value="">
+              All Status
+            </option>
 
             <option value="Scheduled">
               Scheduled
@@ -294,31 +296,31 @@ const Appointments = () => {
           <table className="w-full">
             <thead className="bg-slate-100 dark:bg-slate-800">
               <tr>
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Patient
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Doctor
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Date
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Time
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Reason
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Status
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Actions
                 </th>
               </tr>
@@ -330,23 +332,27 @@ const Appointments = () => {
                   key={appointment.id}
                   className="border-t border-slate-200 dark:border-slate-800"
                 >
-                  <td className="p-5 text-slate-800 dark:text-white">
+                  <td className="p-5">
                     {appointment.patient_name}
                   </td>
 
-                  <td className="p-5 text-slate-800 dark:text-white">
+                  <td className="p-5">
                     {appointment.doctor_name}
                   </td>
 
-                  <td className="p-5 text-slate-800 dark:text-white">
-                    {appointment.appointment_date}
+                  <td className="p-5">
+                    {
+                      appointment.appointment_date
+                    }
                   </td>
 
-                  <td className="p-5 text-slate-800 dark:text-white">
-                    {appointment.appointment_time}
+                  <td className="p-5">
+                    {
+                      appointment.appointment_time
+                    }
                   </td>
 
-                  <td className="p-5 text-slate-800 dark:text-white">
+                  <td className="p-5">
                     {appointment.reason}
                   </td>
 

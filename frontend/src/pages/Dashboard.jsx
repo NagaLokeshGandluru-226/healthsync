@@ -22,6 +22,9 @@ import {
   Cell,
 } from "recharts"
 
+const API_URL =
+  "https://healthsync-771s.onrender.com"
+
 const Dashboard = () => {
   const [summary, setSummary] = useState({
     totalAppointments: 0,
@@ -41,7 +44,7 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       const response = await axios.get(
-        "https:/api/dashboard/summary"
+        `${API_URL}/api/dashboard/summary`
       )
 
       setSummary(response.data)
@@ -53,7 +56,7 @@ const Dashboard = () => {
   const fetchAppointments = async () => {
     try {
       const response = await axios.get(
-        "https:/api/appointments"
+        `${API_URL}/api/appointments`
       )
 
       setAppointments(response.data)
@@ -132,7 +135,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* HEADER */}
       <div className="flex items-center gap-4 mb-10">
         <div className="bg-blue-600 p-4 rounded-3xl">
           <Activity
@@ -152,7 +154,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* SUMMARY CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
         {cards.map(card => (
           <div
@@ -176,9 +177,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      {/* CHARTS */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10">
-        {/* BAR CHART */}
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-lg border border-slate-200 dark:border-slate-800">
           <h2 className="text-2xl font-bold mb-8 text-slate-800 dark:text-white">
             Clinic Statistics
@@ -204,7 +203,6 @@ const Dashboard = () => {
           </ResponsiveContainer>
         </div>
 
-        {/* PIE CHART */}
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-lg border border-slate-200 dark:border-slate-800">
           <h2 className="text-2xl font-bold mb-8 text-slate-800 dark:text-white">
             Revenue Overview
@@ -239,7 +237,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* RECENT APPOINTMENTS */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-800 overflow-hidden">
         <div className="p-8 border-b border-slate-200 dark:border-slate-800">
           <h2 className="text-2xl font-bold text-slate-800 dark:text-white">
@@ -251,23 +248,23 @@ const Dashboard = () => {
           <table className="w-full">
             <thead className="bg-slate-100 dark:bg-slate-800">
               <tr>
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Patient
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Doctor
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Date
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Time
                 </th>
 
-                <th className="text-left p-5 text-slate-700 dark:text-slate-300">
+                <th className="text-left p-5">
                   Status
                 </th>
               </tr>
@@ -279,36 +276,33 @@ const Dashboard = () => {
                 .map(appointment => (
                   <tr
                     key={appointment.id}
-                    className="border-t border-slate-200 dark:border-slate-800"
                   >
-                    <td className="p-5 text-slate-800 dark:text-white">
+                    <td className="p-5">
                       {
                         appointment.patient_name
                       }
                     </td>
 
-                    <td className="p-5 text-slate-800 dark:text-white">
+                    <td className="p-5">
                       {
                         appointment.doctor_name
                       }
                     </td>
 
-                    <td className="p-5 text-slate-800 dark:text-white">
+                    <td className="p-5">
                       {
                         appointment.appointment_date
                       }
                     </td>
 
-                    <td className="p-5 text-slate-800 dark:text-white">
+                    <td className="p-5">
                       {
                         appointment.appointment_time
                       }
                     </td>
 
                     <td className="p-5">
-                      <span className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-4 py-2 rounded-xl font-semibold">
-                        {appointment.status}
-                      </span>
+                      {appointment.status}
                     </td>
                   </tr>
                 ))}
@@ -316,7 +310,7 @@ const Dashboard = () => {
           </table>
 
           {appointments.length === 0 && (
-            <div className="p-10 text-center text-slate-500 dark:text-slate-400">
+            <div className="p-10 text-center">
               No appointments found
             </div>
           )}
