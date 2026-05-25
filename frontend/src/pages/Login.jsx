@@ -26,9 +26,9 @@ const Login = () => {
     setLoading(true)
 
     const response = await axios.post(
-  "https:/api/login",
-  formData
-)
+      "https://healthsync-771s.onrender.com/api/login",
+      formData
+    )
 
     const loggedInUser = response.data.user
 
@@ -38,8 +38,6 @@ const Login = () => {
     )
 
     alert("Login Successful")
-
-    // ROLE-BASED REDIRECT
 
     if (loggedInUser.role === "admin") {
       navigate("/")
