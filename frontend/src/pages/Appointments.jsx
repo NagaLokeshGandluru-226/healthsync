@@ -46,7 +46,7 @@ const Appointments = () => {
   const fetchAppointments = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/appointments",
+        "http://https://healthsync-771s.onrender.com/api/appointments",
         {
           params: filters,
         }
@@ -81,7 +81,7 @@ const Appointments = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/appointments",
+        "http://https://healthsync-771s.onrender.com/api/appointments",
         formData
       )
 
@@ -113,7 +113,7 @@ const Appointments = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/${id}`
+        `http://https://healthsync-771s.onrender.com/api/appointments/${id}`
       )
 
       fetchAppointments()
@@ -125,7 +125,7 @@ const Appointments = () => {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/${id}/status`,
+        `http://https://healthsync-771s.onrender.com/api/appointments/${id}/status`,
         {status}
       )
 

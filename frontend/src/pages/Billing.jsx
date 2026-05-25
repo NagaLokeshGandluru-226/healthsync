@@ -16,7 +16,7 @@ const Billing = () => {
   const fetchBills = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/billing"
+        "http://https://healthsync-771s.onrender.com/api/billing"
       )
 
       setBills(response.data)
@@ -41,7 +41,7 @@ const Billing = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/billing",
+        "http://https://healthsync-771s.onrender.com/api/billing",
         formData
       )
 

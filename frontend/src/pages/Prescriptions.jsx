@@ -30,7 +30,7 @@ const Prescriptions = () => {
   const fetchPrescriptions = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/prescriptions"
+        "http://https://healthsync-771s.onrender.com/api/prescriptions"
       )
 
       setPrescriptions(response.data)
@@ -51,7 +51,7 @@ const Prescriptions = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/prescriptions",
+        "http://https://healthsync-771s.onrender.com/api/prescriptions",
         formData
       )
 
@@ -80,7 +80,7 @@ const Prescriptions = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/prescriptions/${id}`
+        `http://https://healthsync-771s.onrender.com/api/prescriptions/${id}`
       )
 
       fetchPrescriptions()
