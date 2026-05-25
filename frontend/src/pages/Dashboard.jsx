@@ -41,7 +41,7 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       const response = await axios.get(
-        "https://healthsync-771s.onrender.com/api://healthsync-771s.onrender.com/api/dashboard/summary"
+        "https://healthsync-771s.onrender.com//healthsync-771s.onrender.com/api/dashboard/summary"
       )
 
       setSummary(response.data)
@@ -53,7 +53,7 @@ const Dashboard = () => {
   const fetchAppointments = async () => {
     try {
       const response = await axios.get(
-        "https://healthsync-771s.onrender.com/api://healthsync-771s.onrender.com/api/appointments"
+        "https://healthsync-771s.onrender.com//healthsync-771s.onrender.com/api/appointments"
       )
 
       setAppointments(response.data)
