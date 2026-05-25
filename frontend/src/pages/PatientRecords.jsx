@@ -15,7 +15,7 @@ const PatientRecords = () => {
   const fetchPatients = async () => {
     try {
       const response = await axios.get(
-        "https://healthsync-771s.onrender.com//healthsync-771s.onrender.com/api/patients"
+        "https:/api/patients"
       )
 
       setPatients(response.data)
@@ -40,7 +40,7 @@ const PatientRecords = () => {
 
     try {
       await axios.post(
-        "https://healthsync-771s.onrender.com//healthsync-771s.onrender.com/api/patients",
+        "https:/api/patients",
         formData
       )
 
